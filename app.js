@@ -1,19 +1,39 @@
-function formdata(){
-    let name = document.getElementById("name").value;
-    let address = document.getElementById("address").value;
-    let Contact = document.getElementById("Contact").value;
+$(document).ready(function(){
+    $("#name").keyup(function(){
+        let uName =$(this).val();
+        let nameRe = /^[aA-zZ\s]{5}$/
 
-    localStorage.setItem("name1",name);
-    localStorage.setItem("address1",address);
-    localStorage.setItem("Contact1",Contact);
+        if (!nameRe.test(uName)){
+     $(this).next('span').show().text("Please Enter Only Alphabets").css("color","red");
+     $(this).css("border", "2px solid red")
+        }else{
+            $(this).next('span').hide();
+            $(this).css("border","2px solid green")
+        }
+    })
 
-    if(name == "" || address == "" || Contact ==""){
-        alert("")
-}
+    $("#email").keyup(function(){
+        let uemail = $(this).val();
+        let emailRe = /^[a-z0-9]+[@][a-z]+[.]{1}[a-z]{3}$/
+        if (!emailRe.test(uemail)){
+     $(this).next('span').show().text("Please Follow Email Format").css("color","red");
+     $(this).css("border", "2px solid red")
+        }else{
+            $(this).next('span').hide();
+            $(this).css("border","2px solid green")
+        }
+    })
 
-else{
-    alert("welcome")
-    location.assign("onway.html")
-}
+    $("#number").keyup(function(){
+        let uNumber =$(this).val();
+        let numberRe = /^((\+92)?(0092)?(92)?(0)?)(3)([0-9]{9})$/
 
-}
+        if (!numberRe.test(uNumber)){
+     $(this).next('span').show().text("Please Enter Only Number").css("color","red");
+     $(this).css("border", "2px solid red")
+        }else{
+            $(this).next('span').hide();
+            $(this).css("border","2px solid green")
+        }
+    })
+})
